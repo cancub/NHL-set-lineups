@@ -8,18 +8,17 @@ import email.message
 from bs4 import BeautifulSoup
 import config
 
-visible = False
 
 def main(num_days):
 
 
-    if not visible:
-        display = Display(visible=0, size=(800, 600))
-        display.start()
+    display = Display(visible=0, size=(800, 600))
+    display.start()
 
     # login to allow modification of roster
     driver = webdriver.Firefox()
     driver.get("https://login.yahoo.com")
+    print driver.title
     logintxt = driver.find_element_by_name("username")
     logintxt.send_keys(config.CONFIG["login_info"]["user"])
     pwdtxt = driver.find_element_by_name("passwd")
@@ -114,8 +113,7 @@ def main(num_days):
 
     driver.close()
 
-    if not visible:
-        display.stop()
+    display.stop()
 
 def format_date(date):
 
