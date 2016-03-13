@@ -21,9 +21,14 @@ def main(num_days):
     print driver.title
     logintxt = driver.find_element_by_name("username")
     logintxt.send_keys(config.CONFIG["login_info"]["user"])
+    button = driver.find_element_by_id("login-signin")
+    button.click()
+    print "sending username"
+    time.sleep(1)
     pwdtxt = driver.find_element_by_name("passwd")
     pwdtxt.send_keys(config.CONFIG["login_info"]["pw"])
     button = driver.find_element_by_id("login-signin")
+    print "sending password"
     button.click()
     # give it time to log in
     # url = driver.current_url.encode('ascii','ignore')
